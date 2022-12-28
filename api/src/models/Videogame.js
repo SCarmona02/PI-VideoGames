@@ -34,6 +34,12 @@ module.exports = (sequelize) => {
     platforms: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
+    },
+
+    image: {
+      type: DataTypes.STRING,
+      defaultValue: "https://www.sopitas.com/wp-content/uploads/2017/08/controles-videojuegos.jpg",
+      validate: { isUrl: true },
     }
   }, {timestamps: false});
 };
