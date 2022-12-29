@@ -7,7 +7,8 @@ router.get("/", async (req, res) => {
     const { name } = req.query;
     try {
         if (name) {
-            return res.status(200).send("Game by name!");
+            const result = await vgController.listGames(name);
+            return res.status(200).json(result);
         } else {
             const result = await vgController.listGames();
             return res.status(200).json(result);
@@ -17,11 +18,12 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
     const { id } = req.params;
     try {
         if (id) {
-            return res.status(200).send("Game by Id!");
+            const result = await vgController.detailGame(id);
+            return res.status(200).json(result);
         } else {
             throw new Error("Id is required");
         }
@@ -30,11 +32,13 @@ router.get("/:id", (req, res) => {
     }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
+    const newGame = req.body;
     try {
-        
+        const create = await vgController.newGame(newGame);
+        return res.send(create);
     } catch (error) {
-        
+        res.status(400).json({ error: error.message })
     }
 });
 

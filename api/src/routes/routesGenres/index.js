@@ -1,10 +1,12 @@
 const {Router} = require ('express');
+const generoController = require("../../controllers/genresController")
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     try {
-        return res.status(200).send("All genres!")
+        const result = await generoController.allGenres();
+        return res.status(200).json(result)
     } catch (error) {
         res.status(404).json({ error: error.message });
     }
