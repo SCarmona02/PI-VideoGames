@@ -12,7 +12,7 @@ module.exports = {
         const responseFromAPI = await axios.get(`${genresApi}?key=${API_KEY}`);
 
         responseFromAPI.data.results.map(async genero => {
-            let data = { "id": genero.id, "name": genero.name }
+            let data = { "id": genero.id, "name": genero.name.toLowerCase() }
             genres.push(data);
             await Genre.findOrCreate({where: { id: data.id, name: data.name }});
         })

@@ -30,20 +30,20 @@ module.exports = {
 
             function findGenre(){
                 let resultGenre = [];
-                game.genres.map((genre) => resultGenre.push({"id": genre.id, "name": genre.name }));
+                game.genres.map((genre) => resultGenre.push({"id": genre.id, "name": genre.name.toLowerCase() }));
                 return resultGenre;
             }
 
             necessary.push({
                 "id": game.id,
-                "name": game.name,
+                "name": game.name.toLowerCase(),
                 "image": game.background_image,
                 "genres": findGenre()
             })
         })
 
         if (name) {
-            array = necessary.filter(game => game.name === name);
+            array = necessary.filter(game => game.name === name.toLowerCase());
 
             if (array.length > 0) {
                 return array;

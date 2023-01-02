@@ -4,8 +4,8 @@ import style from "./Card.module.css";
 
 const Card = ({ item }) => {
     return (
-        <Link>
-            <h3>{item.nombre}</h3>
+        <Link to={`/home/${item.id}`}>
+            <h3>{item.name}</h3>
             <img src={item.image} alt={item.name}></img>
             {item.genres.map(genre => {
                 return <div key={genre.id}>{genre.name}</div>
