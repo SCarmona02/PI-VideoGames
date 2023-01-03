@@ -38,7 +38,8 @@ module.exports = {
                 "id": game.id,
                 "name": game.name.toLowerCase(),
                 "image": game.background_image,
-                "genres": findGenre()
+                "genres": findGenre(),
+                "rating": game.rating
             })
         })
 
