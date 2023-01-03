@@ -5,10 +5,10 @@ import style from "./Card.module.css";
 const Card = ({ item }) => {
     return (
         <Link to={`/home/${item.id}`}>
-            <h3>{item.name}</h3>
+            <h3>{item.name[0].toUpperCase() + item.name.slice(1)}</h3>
             <img src={item.image} alt={item.name}></img>
             {item.genres.map(genre => {
-                return <div key={genre.id}>{genre.name}</div>
+                return <div key={genre.id}>{genre.name[0].toUpperCase() + genre.name.slice(1)}</div>
             })}
         </Link>
     )

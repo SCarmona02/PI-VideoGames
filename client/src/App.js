@@ -19,12 +19,11 @@ function App() {
         <Home />
       </Route>
 
-      <Route exact path="/home/:id">
-        <Detail />
+      <Route exact path="/home/:id" component={Detail}>
+
       </Route>
 
-      <Route exact path="/form">
-        <Form />
+      <Route exact path="/form" component={Form}>
       </Route>
 
     </div>
