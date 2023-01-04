@@ -8,6 +8,7 @@ export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const FILTER_CREATED = "FILTER_CREATED";
 export const FILTER_BY_NAME = "FILTER_BY_NAME";
 export const FILTER_BY_RATING = "FILTER_BY_RATING";
+export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 export const ERROR = "ERROR";
 
 export const getAllVideoGames = () => {
@@ -88,6 +89,20 @@ export const getAllGenres = () => {
         }
     }
 };
+
+export const createVideoGame = (data) => {
+    return async function () {
+        const response = await axios.post("/videogames/", data);
+        return response;
+    }
+};
+
+export const setGames = () => {
+    return {
+        type: GET_ALL_VIDEOGAMES,
+        payload: []
+    }
+}
 
 export const filterByGenre = (payload) => {
     return {
